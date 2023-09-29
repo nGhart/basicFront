@@ -1,0 +1,8 @@
+.transactionAction {
+  width: 60px;
+  background-color: rgb(26, 115, 96);
+  color: white;
+  border-radius: 5px;
+  margin: 2px;
+  border: none;
+}

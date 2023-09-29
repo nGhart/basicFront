@@ -1,0 +1,43 @@
+@import '../../styles/variables.scss';
+div {
+  div {
+    .businessDetails {
+      h3 {
+      }
+      h4 {
+      }
+    }
+    h1 {
+    }
+    .invoiceDetails {
+      .clientDetails {
+        div {
+        }
+        p {
+        }
+      }
+      .purchaseDetails {
+        .tables {
+          thead {
+            tr {
+            }
+          }
+          tbody {
+            .totals {
+            }
+          }
+        }
+      }
+    }
+    .printCommand {
+      .print {
+        padding: 10px;
+        &:hover {
+          background-color: $main-bg;
+          color: $main-color;
+          cursor: pointer;
+        }
+      }
+    }
+  }
+}

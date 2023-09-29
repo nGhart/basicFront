@@ -1,0 +1,64 @@
+@import '../../styles/variables.scss';
+@import '../../styles/responsive.scss';
+
+.homeContainer {
+  display: grid;
+  gap: 20px;
+  grid-template-columns: repeat(4, 1fr);
+  grid-auto-rows: minmax(180px, auto);
+  margin-bottom: 10px;
+  text-align: center;
+
+  @include xl {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  @include lg {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  @include md {
+    grid-template-columns: repeat(1, 1fr);
+  }
+
+  .box {
+    border-radius: 10px;
+    border: 1px solid $deep-bg;
+  }
+  .box2 {
+    height: 100%;
+    display: flex;
+    align-items: center;
+  }
+  .box4 {
+    grid-column: span 1;
+    grid-row: span 3;
+    padding: 0;
+    background-color: rgba(9, 88, 72, 0.615);
+    border: 2px solid rgb(8, 49, 41);
+  }
+  .box6 {
+    display: flex;
+    width: 100%;
+    align-items: center;
+  }
+  .box5 {
+    grid-column: span 1;
+    grid-row: span 2;
+  }
+  .box7 {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+  }
+  .box8 {
+    grid-column: span 2;
+    grid-row: span 1;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    @include md {
+      grid-column: span 1;
+      grid-row: span 1;
+    }
+  }
+}

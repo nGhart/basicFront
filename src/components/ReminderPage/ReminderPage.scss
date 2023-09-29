@@ -1,0 +1,88 @@
+@import '../../styles/variables.scss';
+.reminderSection {
+  .to-do-app {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    color: #fff;
+    margin: auto;
+    padding: 5px;
+    .reminderContainer {
+      width: 90%;
+
+      .toTitle {
+        text-align: center;
+        margin-bottom: 2px;
+      }
+      .to-do-input {
+        width: 80%;
+        height: 40px;
+        border-top-left-radius: 5px;
+        border-bottom-left-radius: 5px;
+        margin-bottom: 10px;
+        background: transparent;
+        border: 2px solid $main-bg;
+        color: #fff;
+        padding-left: 5px;
+      }
+
+      .to-do-button {
+        height: 40px;
+        width: 20%;
+        font-weight: 700;
+        background-color: $main-bg;
+        border-top-right-radius: 5px;
+        border-bottom-right-radius: 5px;
+        border: 2px solid $main-bg;
+        cursor: pointer;
+      }
+      .todo-row {
+        display: flex;
+        justify-content: space-between;
+        padding: 5px;
+        height: 50px;
+        border: 2px solid black;
+        margin-bottom: 5px;
+        border-radius: 5px;
+        align-items: center;
+        background-color: rgb(15, 96, 79);
+      }
+      .todo-row:nth-child(4n + 1) {
+        background-color: rgb(98, 205, 181);
+      }
+      .todo-row:nth-child(4n + 2) {
+        background-color: rgb(26, 158, 129);
+      }
+      .todo-row:nth-child(4n + 3) {
+        background-color: rgb(49, 116, 101);
+      }
+      .complete {
+        opacity: 0.2;
+      }
+      span {
+        margin: 5px;
+        cursor: pointer;
+      }
+      .checkparent {
+        position: relative;
+        border: 2px solid #fff;
+      }
+      .check {
+        visibility: hidden;
+      }
+      .checkComplete {
+        visibility: visible;
+      }
+      .todoContainer {
+        max-height: 535px;
+        overflow-block: 490px;
+        overflow: scroll;
+      }
+      .editIcon,
+      .deleteIcon {
+        color: $main-color;
+      }
+    }
+  }
+}

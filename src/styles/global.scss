@@ -1,0 +1,38 @@
+@import './variables.scss';
+@import './responsive.scss';
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+.mainSection {
+  background-color: $main-bg;
+  color: $main-color;
+  min-width: 1200px;
+}
+.midSection {
+  display: flex;
+  padding-top: 60px;
+}
+.menuSection {
+  width: 250px;
+  padding: 5px 20px;
+  border-right: 2px solid $dark-accent;
+  @include lg {
+    width: max-content;
+  }
+}
+.contentSection {
+  padding: 5px 20px;
+  display: flex;
+  width: 100%;
+  justify-content: center;
+}
+.tableContainer {
+  height: 510px;
+}

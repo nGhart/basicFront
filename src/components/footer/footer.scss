@@ -1,0 +1,17 @@
+@import '../../styles/variables.scss';
+.footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 15px;
+  padding: 10px;
+  width: 100%;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  z-index: 4;
+  background-color: $deep-bg;
+  .logo {
+    letter-spacing: -1px;
+  }
+}

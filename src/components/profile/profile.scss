@@ -1,0 +1,35 @@
+.profileContainer {
+  width: 100%;
+  margin: 5px;
+  padding: 5px;
+  background-color: rgba(245, 245, 220, 0.473);
+  .imageContainer {
+    img {
+      width: 100%;
+      object-fit: cover;
+    }
+  }
+  .detailsContainer {
+    margin: auto;
+    color: black;
+
+    h6 {
+      line-height: 10px;
+    }
+  }
+  .profileButtons {
+    display: flex;
+    justify-content: space-around;
+    padding-top: 10px;
+    button {
+      width: 40%;
+      color: rgb(199, 196, 173);
+      background-color: rgb(26, 44, 40);
+      border: 3px outset rgb(26, 44, 40);
+
+      &:hover {
+        background-color: rgb(13, 75, 62);
+      }
+    }
+  }
+}

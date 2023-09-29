@@ -1,0 +1,23 @@
+body {
+  background-color: rgb(26, 115, 96);
+}
+.actionIcons {
+  background: none;
+  border: none;
+}
+.fa-eye {
+  color: rgb(105, 106, 93);
+}
+.fa-edit {
+  color: rgb(105, 106, 93);
+}
+.fa-trash-alt {
+  color: rgb(216, 17, 17);
+}
+
+label {
+  margin-right: 20px;
+}
+.fif {
+  width: 50%;
+}
