@@ -159,17 +159,11 @@ const diseaseStore = create((set) => ({
       console.log(error);
     }
   },
-  getInTreatmentDiseases: () => {
-    const { diseases } = diseaseStore.getState();
-    return diseases.filter(
-      (disease) => disease.diseaseOutcome === 'In treatment'
-    );
-  },
-  getInTreatmentDiseases: () => {
-    const { diseases } = diseaseStore.getState();
-    return diseases.filter(
-      (disease) => disease.diseaseOutcome === 'In treatment'
-    );
-  },
+  // getInTreatmentDiseases: () => {
+  //   const { diseases } = diseaseStore.getState();
+  //   return diseases.filter(
+  //     (disease) => disease.diseaseOutcome === 'In treatment'
+  //   );
+  // },
 }));
 export default diseaseStore;
