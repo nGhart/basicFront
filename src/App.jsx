@@ -13,14 +13,12 @@ import {
 } from 'react-router-dom';
 import Home from './pages/home/Home.jsx';
 import FeedPage from './pages/FeedPage.jsx';
-import TransactionPage from './pages/TransactionPage.jsx';
 import MatingPage from './pages/MatingPage.jsx';
 import HealthPage from './pages/HealthPage.jsx';
 import QuarantinePage from './pages/QuarantinePage.jsx';
 import VaccinationPage from './pages/VaccinationPage.jsx';
 import DiseasePage from './pages/DiseasePage.jsx';
 import MedicationPage from './pages/MedicationPage.jsx';
-import TransactionCategory from './contents/transaction/TransactionCategory.jsx';
 import ProfilePage from './pages/ProfilePage.jsx';
 import './App.css';
 
@@ -33,13 +31,7 @@ const Layout = () => {
       }}
     >
       <Navigation />
-      <div
-        className="midSection"
-        style={{
-          minHeight: 'calc(100vh-106px)',
-          maxHeight: 'calc(100vh-106px)',
-        }}
-      >
+      <div className="midSection">
         <div className="menuSection">
           <Menu />
         </div>
@@ -66,8 +58,6 @@ const router = createBrowserRouter(
           <Route path="vaccination" element={<VaccinationPage />} />
         </Route>
         <Route path="feed" element={<FeedPage />} />
-        <Route path="transaction" element={<TransactionPage />} />
-        <Route path="category" element={<TransactionCategory />} />
         <Route path="meds" element={<MedicationPage />} />
         <Route path="profile" element={<ProfilePage />} />
       </Route>

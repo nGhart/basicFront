@@ -1,7 +1,6 @@
 import ChartBox from '../../components/chartbox/ChartBox';
 import './home.scss';
 import ReminderPage from '../../components/ReminderPage/ReminderPage';
-import TransactionSummary from '../../summaries/TransactionSummary';
 import DiseaseSummary from '../../summaries/DiseaseSummary';
 import MatingSummary from '../../summaries/MatingSummary';
 import FeedingSummary from '../../summaries/FeedingSummary';
@@ -32,9 +31,7 @@ const Home = () => {
       <div className="box box7">
         <QuarantineSummary />
       </div>
-      <div className="box box8">
-        <TransactionSummary />
-      </div>
+      <div className="box box8">box 8</div>
     </div>
   );
 };

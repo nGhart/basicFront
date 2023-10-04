@@ -1,6 +1,10 @@
 @import '../../styles/variables.scss';
 @import '../../styles/responsive.scss';
 .menuContainer {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  justify-content: space-around;
   .item {
     display: flex;
     flex-direction: column;

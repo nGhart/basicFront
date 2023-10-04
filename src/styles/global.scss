@@ -5,19 +5,18 @@
   padding: 0;
   box-sizing: border-box;
 }
-
 a {
   text-decoration: none;
   color: inherit;
 }
 .mainSection {
-  background-color: $main-bg;
-  color: $main-color;
-  min-width: 1200px;
+  //background-color: $main-bg;
+  //color: $main-color;
+  //min-width: 1200px;
 }
 .midSection {
   display: flex;
-  padding-top: 60px;
+  margin-top: 77px;
 }
 .menuSection {
   width: 250px;
@@ -33,6 +32,6 @@ a {
   width: 100%;
   justify-content: center;
 }
-.tableContainer {
-  height: 510px;
-}
+// .tableContainer {
+//   height: 510px;
+// }

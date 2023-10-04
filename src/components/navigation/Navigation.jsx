@@ -19,20 +19,22 @@ const Navigation = () => {
 
   return (
     <div className="navSection">
-      <div className="logo">
-        <Link to="/" className="listItem">
-          <span className="font3">records</span>
-        </Link>
-      </div>
-      <div className="icons">
-        <>
-          <div className="user">
-            <img src={profilePic} alt="Logo" />
-            <Link to="profile">
-              <button>Welcome {profileName} </button>
-            </Link>
-          </div>
-        </>
+      <div className="navContainer">
+        <div className="logo">
+          <Link to="/" className="listItem">
+            <span className="font3">records</span>
+          </Link>
+        </div>
+        <div className="icons">
+          <>
+            <div className="user">
+              <img src={profilePic} alt="Logo" />
+              <Link to="profile">
+                <button>Welcome {profileName} </button>
+              </Link>
+            </div>
+          </>
+        </div>
       </div>
     </div>
   );

@@ -22,6 +22,9 @@
   .box {
     border-radius: 10px;
     border: 1px solid $deep-bg;
+    background-color: rgba(255, 255, 255, 0.724);
+    background-color: rgba(255, 255, 255, 0.473);
+    box-shadow: 0 4px 8px 0 $deep-bg, 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   }
   .box2 {
     height: 100%;

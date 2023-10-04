@@ -2,61 +2,63 @@
 @import '../../styles/variables.scss';
 
 .navSection {
-  display: flex;
-  width: 100%;
-  padding: 12px;
-  margin: 0;
-  position: fixed;
-  left: 0;
-  top: 0;
-  z-index: 5;
-  align-items: center;
-  justify-content: space-between;
-  background-color: $deep-bg;
-  .logo {
+  padding: 10px;
+  .navContainer {
     display: flex;
+    width: 100%;
+    padding: 12px;
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 5;
     align-items: center;
-    letter-spacing: -1px;
-  }
-  .icons {
-    display: flex;
-    align-items: center;
-    gap: 20px;
-    @include sm {
-      text-align: end;
-    }
-
-    .user {
+    justify-content: space-between;
+    background-color: $deep-bg;
+    .logo {
       display: flex;
       align-items: center;
-      img {
-        width: 26px;
-        height: 26px;
-        border-radius: 50%;
-        object-fit: cover;
-        margin-right: 5px;
+      letter-spacing: -1px;
+    }
+    .icons {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      @include sm {
+        text-align: end;
       }
-      button {
-        padding: 3px;
-        background-color: transparent;
-        border: 2px outset $dark-bg;
-        color: $soft-color;
-        font-weight: 700;
-        &:hover {
-          background-color: $dark-bg;
-          color: white;
+
+      .user {
+        display: flex;
+        align-items: center;
+        img {
+          width: 26px;
+          height: 26px;
+          border-radius: 50%;
+          object-fit: cover;
+          margin-right: 5px;
+        }
+        button {
+          padding: 3px;
+          background-color: transparent;
+          border: 2px outset $dark-bg;
+          color: $soft-color;
+          font-weight: 700;
+          &:hover {
+            background-color: $dark-bg;
+            color: white;
+          }
         }
       }
-    }
-    .logOutLink {
-      .logOut {
-        background-color: transparent;
-        padding: 3px;
-        border: none;
-        font-family: 'Rowdies', cursive;
-        color: $soft-color;
-        &:hover {
-          background-color: rgb(26, 44, 40);
+      .logOutLink {
+        .logOut {
+          background-color: transparent;
+          padding: 3px;
+          border: none;
+          font-family: 'Rowdies', cursive;
+          color: $soft-color;
+          &:hover {
+            background-color: rgb(26, 44, 40);
+          }
         }
       }
     }
