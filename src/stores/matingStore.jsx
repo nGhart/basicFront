@@ -10,6 +10,7 @@ const matingStore = create((set) => ({
     matingDate2: '',
     nesting: '',
     kindling: '',
+    status: '',
   },
   updateFormMating: {
     matingDoe: '',
@@ -18,6 +19,7 @@ const matingStore = create((set) => ({
     matingDate2: '',
     nesting: '',
     kindling: '',
+    status: '',
     _id: null,
   },
 
@@ -29,6 +31,7 @@ const matingStore = create((set) => ({
       console.log(error);
     }
   },
+
   updateCreateMatings: (e) => {
     try {
       const { name, value } = e.target;
@@ -44,7 +47,6 @@ const matingStore = create((set) => ({
       console.log(error);
     }
   },
-
   handleAddMating: async (e) => {
     try {
       e.preventDefault();
@@ -59,12 +61,14 @@ const matingStore = create((set) => ({
           matingDate2: '',
           nesting: '',
           kindling: '',
+          status: '',
         },
       });
     } catch (error) {
       console.log(error.message);
     }
   },
+
   deleteMating: async (_id) => {
     try {
       const response = await axios.delete(`/matings/${_id}`);
@@ -105,7 +109,7 @@ const matingStore = create((set) => ({
           matingDate2: item.matingDate2,
           nesting: item.nesting,
           kindling: item.kindling,
-
+          status: item.status,
           _id: item._id,
         },
       });
@@ -113,7 +117,6 @@ const matingStore = create((set) => ({
       console.log(error);
     }
   },
-
   updateMating: async (e) => {
     try {
       e.preventDefault();
@@ -125,6 +128,7 @@ const matingStore = create((set) => ({
           matingDate2,
           nesting,
           kindling,
+          status,
           _id,
         },
         matings,
@@ -135,6 +139,7 @@ const matingStore = create((set) => ({
         matingDate1,
         matingDate2,
         nesting,
+        status,
         kindling,
       });
 
@@ -153,6 +158,7 @@ const matingStore = create((set) => ({
           matingDate2: '',
           nesting: '',
           kindling: '',
+          status: '',
           _id: null,
         },
       });
