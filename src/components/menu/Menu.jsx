@@ -27,26 +27,29 @@ const Menu = () => {
         <span className="menuTitle">Breeding</span>
         <Link to="/mating" className="listItem">
           <i className="fas fa-venus-mars"></i>
-          {/* <img src={mating} alt="" /> */}
           <span className="listItemTitle">Mating Records</span>
         </Link>
       </div>
       <div className="item">
         <span className="menuTitle">Health</span>
-        <Link to="health" className="listItem">
+        <Link to="disease" className="listItem">
           <i className="fas fa-plus-square"></i>
-          <span className="listItemTitle">Health Records</span>
+          <span className="listItemTitle">Disease Records</span>
         </Link>
+        <Link to="quarantine" className="listItem">
+          <i className="fas fa-plus-square"></i>
+          <span className="listItemTitle">Quarantine Records</span>
+        </Link>
+      </div>
+      <div className="item">
+        <span className="menuTitle">Medication</span>
         <Link to="meds" className="listItem">
           <i className="fas fa-prescription"></i>
           <span className="listItemTitle">Medication Stock</span>
         </Link>
-      </div>
-      <div className="item">
-        <span className="menuTitle">Finance</span>
-        <Link to="transaction" className="listItem">
-          <i className="fas fa-dollar-sign"></i>
-          <span className="listItemTitle">Expense Manager</span>
+        <Link to="/vaccination" className="listItem">
+          <i className="fas fa-venus-mars"></i>
+          <span className="listItemTitle">Disease Prevention</span>
         </Link>
       </div>
     </div>
