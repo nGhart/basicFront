@@ -47,6 +47,22 @@ const EditFeed = ({
           value={updateFormFeed.feedDatePurchased}
         />
       </Form.Group>
+      <Form.Group className="mb-3">
+        <Form.Label>STATUS</Form.Label>
+        <Form.Select
+          aria-label="STATUS"
+          name="status"
+          className="fif"
+          required
+          onChange={handleUpdateFeed}
+          value={updateFormFeed.status}
+          type="text"
+        >
+          <option>Pick Status</option>
+          <option value="Available">Available</option>
+          <option value="Finished">Finished</option>
+        </Form.Select>
+      </Form.Group>
       <div className="formButtonsContainer">
         <button className="formButtons" type="submit">
           Save
