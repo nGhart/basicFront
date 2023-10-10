@@ -13,17 +13,18 @@ const Home = () => {
       <div className="box box1">
         <ChartBox />
       </div>
-      <div className="box box2">
-        <DiseaseSummary />
-      </div>
-      <div className="box box3">
-        <VaccinationSummary />
-      </div>
+      <div className="box box8">8</div>
       <div className="box box4">
         <ReminderPage />
       </div>
       <div className="box box5">
         <MatingSummary />
+      </div>
+      <div className="box box2">
+        <DiseaseSummary />
+      </div>
+      <div className="box box3">
+        <VaccinationSummary />
       </div>
       <div className="box box6">
         <FeedingSummary />
@@ -31,7 +32,6 @@ const Home = () => {
       <div className="box box7">
         <QuarantineSummary />
       </div>
-      <div className="box box8">box 8</div>
     </div>
   );
 };
