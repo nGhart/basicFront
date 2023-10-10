@@ -8,12 +8,14 @@ const feedStore = create((set) => ({
     feedQuantity: '',
     feedDatePurchased: '',
     feedServing: '',
+    status: '',
   },
   updateFormFeed: {
     feedName: '',
     feedQuantity: '',
     feedDatePurchased: '',
     feedServing: '',
+    status: '',
     _id: null,
   },
 
@@ -53,6 +55,7 @@ const feedStore = create((set) => ({
           feedQuantity: '',
           feedDatePurchased: '',
           feedServing: '',
+          status: '',
         },
       });
     } catch (error) {
@@ -97,6 +100,7 @@ const feedStore = create((set) => ({
           feedQuantity: item.feedQuantity,
           feedDatePurchased: item.feedDatePurchased,
           feedServing: item.feedServing,
+          status: item.status,
           _id: item._id,
         },
       });
@@ -114,6 +118,7 @@ const feedStore = create((set) => ({
           feedQuantity,
           feedDatePurchased,
           feedServing,
+          status,
           _id,
         },
         feeds,
@@ -123,6 +128,7 @@ const feedStore = create((set) => ({
         feedQuantity,
         feedDatePurchased,
         feedServing,
+        status,
       });
 
       const newFeeds = [...feeds];
@@ -138,6 +144,7 @@ const feedStore = create((set) => ({
           feedQuantity: '',
           feedDatePurchased: '',
           feedServing: '',
+          status: '',
           _id: null,
         },
       });
