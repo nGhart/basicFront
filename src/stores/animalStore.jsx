@@ -10,17 +10,13 @@ const animalStore = create((set) => ({
     dob: '',
     bred: '',
     breed: '',
+    description: '',
     dame: '',
     sire: '',
     grandDame: '',
     grandSire: '',
-    weaning: '',
-    weightBirth: '',
-    weightWean: '',
-    weight8: '',
     weightCurrent: '',
     weightSale: '',
-    firstService: '',
     totalService: '',
     totalLitters: '',
     totalKits: '',
@@ -28,6 +24,8 @@ const animalStore = create((set) => ({
     deadKits: '',
     soldKits: '',
     butcheredKits: '',
+    pic: '',
+    status: '',
   },
   updateForm: {
     name: '',
@@ -35,17 +33,13 @@ const animalStore = create((set) => ({
     dob: '',
     bred: '',
     breed: '',
+    description: '',
     dame: '',
     sire: '',
     grandDame: '',
     grandSire: '',
-    weaning: '',
-    weightBirth: '',
-    weightWean: '',
-    weight8: '',
     weightCurrent: '',
     weightSale: '',
-    firstService: '',
     totalService: '',
     totalLitters: '',
     totalKits: '',
@@ -53,15 +47,14 @@ const animalStore = create((set) => ({
     deadKits: '',
     soldKits: '',
     butcheredKits: '',
+    pic: '',
+    status: '',
     _id: null,
   },
   animalSex: [],
   //functions
   getAnimals: async () => {
     try {
-      // const response = await axios.get('/animals', {
-      //   user: '64fce31fe368d413452cc3d4',
-      // });
       const response = await axios.get('/animals');
       set({ animals: response.data.animals });
     } catch (error) {
@@ -97,17 +90,13 @@ const animalStore = create((set) => ({
           dob: '',
           bred: '',
           breed: '',
+          description: '',
           dame: '',
           sire: '',
           grandDame: '',
           grandSire: '',
-          weaning: '',
-          weightBirth: '',
-          weightWean: '',
-          weight8: '',
           weightCurrent: '',
           weightSale: '',
-          firstService: '',
           totalService: '',
           totalLitters: '',
           totalKits: '',
@@ -115,12 +104,15 @@ const animalStore = create((set) => ({
           deadKits: '',
           soldKits: '',
           butcheredKits: '',
+          pic: '',
+          status: '',
         },
       });
     } catch (error) {
       console.log(error.message);
     }
   },
+
   deleteAnimal: async (_id) => {
     try {
       const response = await axios.delete(`/animals/${_id}`);
@@ -134,6 +126,7 @@ const animalStore = create((set) => ({
       console.log(error);
     }
   },
+
   handleUpdate: (e) => {
     try {
       const { value, name } = e.target;
@@ -159,17 +152,13 @@ const animalStore = create((set) => ({
           dob: item.dob,
           bred: item.bred,
           breed: item.breed,
+          description: item.description,
           dame: item.dame,
           sire: item.sire,
           grandDame: item.grandDame,
           grandSire: item.grandSire,
-          weaning: item.weaning,
-          weightBirth: item.weightBirth,
-          weightWean: item.weightWean,
-          weight8: item.weight8,
           weightCurrent: item.weightCurrent,
           weightSale: item.weightSale,
-          firstService: item.firstService,
           totalService: item.totalService,
           totalLitters: item.totalLitters,
           totalKits: item.totalKits,
@@ -177,6 +166,8 @@ const animalStore = create((set) => ({
           deadKits: item.deadKits,
           soldKits: item.soldKits,
           butcheredKits: item.butcheredKits,
+          pic: item.pic,
+          status: item.status,
           _id: item._id,
         },
       });
@@ -194,12 +185,12 @@ const animalStore = create((set) => ({
           dob,
           bred,
           breed,
+          description,
           dame,
           sire,
           grandDame,
           grandSire,
           weaning,
-          weightBirth,
           weightWean,
           weight8,
           weightCurrent,
@@ -212,6 +203,8 @@ const animalStore = create((set) => ({
           deadKits,
           soldKits,
           butcheredKits,
+          pic,
+          status,
           _id,
         },
         animals,
@@ -222,12 +215,12 @@ const animalStore = create((set) => ({
         dob,
         bred,
         breed,
+        description,
         dame,
         sire,
         grandDame,
         grandSire,
         weaning,
-        weightBirth,
         weightWean,
         weight8,
         weightCurrent,
@@ -240,6 +233,8 @@ const animalStore = create((set) => ({
         deadKits,
         soldKits,
         butcheredKits,
+        status,
+        pic,
       });
 
       const newAnimals = [...animals];
@@ -256,17 +251,13 @@ const animalStore = create((set) => ({
           dob: '',
           bred: '',
           breed: '',
+          description: '',
           dame: '',
           sire: '',
           grandDame: '',
           grandSire: '',
-          weaning: '',
-          weightBirth: '',
-          weightWean: '',
-          weight8: '',
           weightCurrent: '',
           weightSale: '',
-          firstService: '',
           totalService: '',
           totalLitters: '',
           totalKits: '',
@@ -274,6 +265,8 @@ const animalStore = create((set) => ({
           deadKits: '',
           soldKits: '',
           butcheredKits: '',
+          pic: '',
+          status: '',
           _id: null,
         },
       });
