@@ -1,14 +1,23 @@
 import React, { useState } from 'react';
-import Pagination from 'react-bootstrap/Pagination';
 import SingleMating from './SingleMating';
-import Table from 'react-bootstrap/Table';
+import {
+  Table,
+  Thead,
+  Tbody,
+  Tfoot,
+  Tr,
+  Th,
+  Td,
+  TableCaption,
+  TableContainer,
+} from '@chakra-ui/react';
 import matingStore from '../../stores/matingStore';
 
 const Matings = () => {
   const store = matingStore();
   const [currentPage, setCurrentPage] = useState(1);
   const matings = store.matings || [];
-  const itemsPerPage = 10;
+  const itemsPerPage = 7;
   const lastIndex = currentPage * itemsPerPage;
   const firstIndex = lastIndex - itemsPerPage;
   const itemsShown = matings.slice(firstIndex, lastIndex);
@@ -32,51 +41,54 @@ const Matings = () => {
   }
   return (
     <div className="tableSection">
-      <Table bordered hover>
-        <thead>
-          <tr>
-            <th></th>
-            <th>DOE</th>
-            <th>BUCK</th>
-            <th>FIRST SERVICING</th>
-            <th>LAST SERVICING</th>
-            <th>ESTIMATED NESTING DATE</th>
-            <th>NESTING DATE</th>
-            <th>KINDLING DATE</th>
-            <th>ACTIONS</th>
-          </tr>
-        </thead>
-        <tbody>
-          {itemsShown.map((item, index) => {
-            const newIndex = firstIndex + index;
-            return <SingleMating index={newIndex} item={item} key={item._id} />;
-          })}
-        </tbody>
-      </Table>
-      <div className="page">
-        <Pagination>
-          <Pagination.Item>
-            <i onClick={prevPage} style={{ color: 'black' }}>
-              Prev
-            </i>
-          </Pagination.Item>
-          {numbers.map((item) => (
-            <Pagination.Item
-              key={item}
-              className={`${currentPage === item ? 'activePage' : ''}`}
-            >
-              <i onClick={() => changePage(item)} style={{ color: 'black' }}>
-                {item}
-              </i>
-            </Pagination.Item>
-          ))}
-          <Pagination.Item>
-            <i onClick={nextPage} style={{ color: 'black' }}>
-              Next
-            </i>
-          </Pagination.Item>
-        </Pagination>
-      </div>
+      <TableContainer>
+        <Table>
+          <Thead>
+            <Tr>
+              <Th></Th>
+              <Th>DOE</Th>
+              <Th>BUCK</Th>
+              <Th>FIRST SERVICING</Th>
+              <Th>LAST SERVICING</Th>
+              <Th>ESTIMATED NESTING DATE</Th>
+              <Th>NESTING DATE</Th>
+              <Th>KINDLING DATE</Th>
+              <Th>STATUS</Th>
+              <Th>ACTIONS</Th>
+            </Tr>
+          </Thead>
+          <Tbody>
+            {itemsShown.map((item, index) => {
+              const newIndex = firstIndex + index;
+              return (
+                <SingleMating index={newIndex} item={item} key={item._id} />
+              );
+            })}
+          </Tbody>
+          <TableCaption>
+            <div className="page">
+              <div className="pageContainer">
+                <div className="prev">
+                  <i onClick={prevPage}>Prev</i>
+                </div>
+                {numbers.map((item) => (
+                  <div
+                    key={item}
+                    className={`${
+                      currentPage === item ? 'activePage' : 'pages'
+                    }`}
+                  >
+                    <i onClick={() => changePage(item)}>{item}</i>
+                  </div>
+                ))}
+                <div className="next">
+                  <i onClick={nextPage}>Next</i>
+                </div>
+              </div>
+            </div>
+          </TableCaption>
+        </Table>
+      </TableContainer>
     </div>
   );
 };
