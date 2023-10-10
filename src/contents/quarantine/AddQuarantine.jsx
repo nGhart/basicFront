@@ -24,7 +24,7 @@ const AddQuarantine = () => {
         aria-labelledby="contained-modal-title-vcenter"
         centered
       >
-        <Modal.Header closeButton>
+        <Modal.Header className="header" closeButton>
           <Modal.Title>Add New Entry</Modal.Title>
         </Modal.Header>
         <Modal.Body>

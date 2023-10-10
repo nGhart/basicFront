@@ -8,12 +8,14 @@ const medStore = create((set) => ({
     number: '',
     expiryDate: '',
     supplier: '',
+    status: '',
   },
   updateFormMed: {
     name: '',
     number: '',
     expiryDate: '',
     supplier: '',
+    status: '',
     _id: null,
   },
   getMeds: async () => {
@@ -43,10 +45,7 @@ const medStore = create((set) => ({
     try {
       e.preventDefault();
       const { createMed, meds } = medStore.getState();
-      const response = await axios.post(
-        '/meds',
-        createMed
-      );
+      const response = await axios.post('/meds', createMed);
       set({
         meds: [...meds, response.data.med],
         createMed: {
@@ -54,6 +53,7 @@ const medStore = create((set) => ({
           number: '',
           expiryDate: '',
           supplier: '',
+          status: '',
         },
       });
     } catch (error) {
@@ -97,6 +97,7 @@ const medStore = create((set) => ({
           number: item.number,
           expiryDate: item.expiryDate,
           supplier: item.supplier,
+          status: item.status,
           _id: item._id,
         },
       });
@@ -108,7 +109,7 @@ const medStore = create((set) => ({
     try {
       e.preventDefault();
       const {
-        updateFormMed: { name, number, expiryDate, supplier, _id },
+        updateFormMed: { name, number, expiryDate, supplier, status, _id },
         meds,
       } = medStore.getState();
       const response = await axios.put(`/meds/${_id}`, {
@@ -116,6 +117,7 @@ const medStore = create((set) => ({
         number,
         expiryDate,
         supplier,
+        status,
       });
 
       const newMeds = [...meds];
@@ -131,6 +133,7 @@ const medStore = create((set) => ({
           number: '',
           expiryDate: '',
           supplier: '',
+          status: '',
           _id: null,
         },
       });

@@ -7,11 +7,13 @@ const vaccinationStore = create((set) => ({
     medication: '',
     date: '',
     nextDate: '',
+    status: '',
   },
   updateFormVaccination: {
     medication: '',
     date: '',
     nextDate: '',
+    status: '',
     _id: null,
   },
 
@@ -50,6 +52,7 @@ const vaccinationStore = create((set) => ({
           medication: '',
           date: '',
           nextDate: '',
+          status: '',
         },
       });
     } catch (error) {
@@ -92,6 +95,7 @@ const vaccinationStore = create((set) => ({
         updateFormVaccination: {
           medication: item.medication,
           date: item.date,
+          status: item.status,
           nextDate: item.nextDate,
           _id: item._id,
         },
@@ -105,13 +109,14 @@ const vaccinationStore = create((set) => ({
     try {
       e.preventDefault();
       const {
-        updateFormVaccination: { medication, date, nextDate, _id },
+        updateFormVaccination: { medication, date, nextDate, _id, status },
         vaccinations,
       } = vaccinationStore.getState();
       const response = await axios.put(`/vaccinations/${_id}`, {
         medication,
         date,
         nextDate,
+        status,
       });
 
       const newVaccinations = [...vaccinations];
@@ -126,6 +131,7 @@ const vaccinationStore = create((set) => ({
           medication: '',
           date: '',
           nextDate: '',
+          status: '',
           _id: null,
         },
       });

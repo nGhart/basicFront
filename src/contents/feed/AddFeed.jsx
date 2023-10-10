@@ -24,7 +24,7 @@ const AddFeed = () => {
         aria-labelledby="contained-modal-title-vcenter"
         centered
       >
-        <Modal.Header closeButton>
+        <Modal.Header className="header" closeButton>
           <Modal.Title>Add New Feed</Modal.Title>
         </Modal.Header>
         <Modal.Body>
@@ -68,6 +68,22 @@ const AddFeed = () => {
                 onChange={store.updateCreateFeeds}
                 value={store.createFeed.feedDatePurchased}
               />
+            </Form.Group>
+            <Form.Group className="mb-3">
+              <Form.Label>STATUS</Form.Label>
+              <Form.Select
+                aria-label="STATUS"
+                name="status"
+                className="fif"
+                required
+                onChange={store.updateCreateFeeds}
+                value={store.createFeed.status}
+                type="text"
+              >
+                <option>Pick Status</option>
+                <option value="Available">Available</option>
+                <option value="Finished">Finished</option>
+              </Form.Select>
             </Form.Group>
             <div className="formButtonsContainer">
               <button className="formButtons" type="submit">

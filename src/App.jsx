@@ -1,9 +1,10 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
+import { ChakraProvider } from '@chakra-ui/react';
+import './styles/global.scss';
 import AnimalTable from './pages/AnimalTable.jsx';
 import Menu from './components/menu/Menu.jsx';
 import Navigation from './components/navigation/Navigation.jsx';
 import Footer from './components/footer/Footer.jsx';
-import './styles/global.scss';
 import {
   createBrowserRouter,
   createRoutesFromElements,
@@ -20,16 +21,11 @@ import VaccinationPage from './pages/VaccinationPage.jsx';
 import DiseasePage from './pages/DiseasePage.jsx';
 import MedicationPage from './pages/MedicationPage.jsx';
 import ProfilePage from './pages/ProfilePage.jsx';
-import './App.css';
+import Chat from './components/chat/Chat';
 
 const Layout = () => {
   return (
-    <div
-      className="mainSection"
-      style={{
-        position: 'relative',
-      }}
-    >
+    <div className="mainSection">
       <Navigation />
       <div className="midSection">
         <div className="menuSection">
@@ -51,6 +47,9 @@ const router = createBrowserRouter(
         <Route path="/" element={<Home />} />
         <Route path="animals" element={<AnimalTable />}></Route>
         <Route path="mating" element={<MatingPage />} />
+        <Route path="disease" element={<DiseasePage />} />
+        <Route path="quarantine" element={<QuarantinePage />} />
+        <Route path="vaccination" element={<VaccinationPage />} />
         <Route path="health" element={<HealthPage />}>
           <Route index element={<DiseasePage />} />
           <Route path="disease" element={<DiseasePage />} />
@@ -68,7 +67,10 @@ const router = createBrowserRouter(
 function App() {
   return (
     <>
-      <RouterProvider router={router} />
+      <ChakraProvider>
+        <RouterProvider router={router} />
+      </ChakraProvider>
+      <Chat />
     </>
   );
 }

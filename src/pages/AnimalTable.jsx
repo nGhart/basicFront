@@ -15,22 +15,21 @@ const AnimalTable = () => {
 
   return (
     <div>
-      <Navbar
-        className="headers"
-        style={{ backgroundColor: 'rgb(14, 73, 60)' }}
-      >
-        <Container>
-          <Navbar.Brand href="#home">
-            <h1 className="title">Animal Records</h1>
-          </Navbar.Brand>
-          <Navbar.Toggle />
-          <Navbar.Collapse className="justify-content-end">
-            <Navbar.Text>
-              <AddAnimal />
-            </Navbar.Text>
-          </Navbar.Collapse>
-        </Container>
-      </Navbar>
+      <header className="headerNav">
+        <Navbar>
+          <Container>
+            <Navbar.Brand href="#home">
+              <h1 className="title">Animal Records</h1>
+            </Navbar.Brand>
+            <Navbar.Toggle />
+            <Navbar.Collapse className="justify-content-end">
+              <Navbar.Text>
+                <AddAnimal />
+              </Navbar.Text>
+            </Navbar.Collapse>
+          </Container>
+        </Navbar>
+      </header>
 
       <div className="tableContainer">
         <Animals />

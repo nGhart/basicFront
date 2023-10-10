@@ -2,6 +2,21 @@ import React, { useState } from 'react';
 import Modal from 'react-bootstrap/Modal';
 import matingStore from '../../stores/matingStore';
 import EditMating from './EditMating';
+import {
+  Popover,
+  PopoverTrigger,
+  PopoverContent,
+  PopoverHeader,
+  PopoverBody,
+  PopoverFooter,
+  PopoverArrow,
+  PopoverCloseButton,
+  Portal,
+  useDisclosure,
+  Button,
+  Tr,
+  Td,
+} from '@chakra-ui/react';
 
 const SingleMating = ({ item, index }) => {
   const store = matingStore((store) => {
@@ -13,6 +28,7 @@ const SingleMating = ({ item, index }) => {
       updateFormMating: store.updateFormMating,
     };
   });
+  const { isOpenDelete, onToggle, onCloseDelete } = useDisclosure();
   const [showModal, setShowModal] = useState(false);
   const handleOpenModal = () => {
     store.editMating(item);
@@ -35,31 +51,51 @@ const SingleMating = ({ item, index }) => {
 
   return (
     <>
-      <tr key={item._id}>
-        <td>{index + 1}</td>
-        <td>{item.matingDoe}</td>
-        <td>{item.matingBuck}</td>
-        <td>{item.matingDate1.slice(0, 10)}</td>
-        <td>{item.matingDate2.slice(0, 10)}</td>
-        <td>{addDaysToDate(item.matingDate2, 28)}</td>
-        <td>{item.nesting}</td>
-        <td>{item.kindling}</td>
-        <td>
+      <Tr key={item._id}>
+        <Td>{index + 1}</Td>
+        <Td>{item.matingDoe}</Td>
+        <Td>{item.matingBuck}</Td>
+        <Td>{item.matingDate1.slice(0, 10)}</Td>
+        <Td>{item.matingDate2.slice(0, 10)}</Td>
+        <Td>{addDaysToDate(item.matingDate2, 28)}</Td>
+        <Td>{item.nesting}</Td>
+        <Td>{item.kindling}</Td>
+        <Td>{item.status}</Td>
+        <Td>
           <div className="around actionIcons">
             <button className="actionIcons" onClick={handleOpenModal}>
               <i className="fas fa-edit"></i>
             </button>
-            <button
-              className="actionIcons"
-              onClick={() => store.deleteMating(item._id)}
-            >
-              <i className="fas fa-trash-alt"></i>
-            </button>
+            <Popover>
+              <PopoverTrigger>
+                <button className="actionIcons" onClick={onToggle}>
+                  <i className="fas fa-trash-alt"></i>
+                </button>
+              </PopoverTrigger>
+              <Portal>
+                <PopoverContent>
+                  <PopoverArrow />
+                  <PopoverHeader>Header</PopoverHeader>
+                  <PopoverCloseButton />
+                  <PopoverBody>
+                    Are you sure you want to delete this entry
+                  </PopoverBody>
+                  <PopoverFooter>
+                    <Button
+                      colorScheme="red"
+                      onClick={() => store.deleteAnimal(item._id)}
+                    >
+                      Delete
+                    </Button>
+                  </PopoverFooter>
+                </PopoverContent>
+              </Portal>
+            </Popover>
           </div>
-        </td>
-      </tr>
-      <Modal show={showModal} onHide={handleCloseModal}>
-        <Modal.Header closeButton>
+        </Td>
+      </Tr>
+      <Modal show={showModal} onHide={handleCloseModal} scrollable={true}>
+        <Modal.Header className="header" closeButton>
           <Modal.Title>Edit Entry</Modal.Title>
         </Modal.Header>
         <Modal.Body>

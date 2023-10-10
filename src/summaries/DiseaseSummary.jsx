@@ -24,9 +24,13 @@ const DiseaseSummary = () => {
         <h4 className="font1">
           Diseased Animals: {inTreatmentDiseases.length}
         </h4>
-        <div>
+        <div style={{ gap: 2 }} className="flex">
           {inTreatmentDiseases.map((item) => (
-            <span key={item._id} style={{ margin: 'auto 2px' }}>
+            <span
+              key={item._id}
+              className="homeBack flex"
+              style={{ width: '60px', height: '60px', borderRadius: '50%' }}
+            >
               {item.diseaseAnimal}
             </span>
           ))}

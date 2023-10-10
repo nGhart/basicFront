@@ -15,8 +15,8 @@ const ProfilePage = () => {
 
   return (
     <div style={{ width: '100%' }}>
-      <header className="App-header">
-        <Navbar style={{ backgroundColor: 'rgb(14, 73, 60)', width: '100%' }}>
+      <header className="headerNav">
+        <Navbar>
           <Container>
             <Navbar.Brand>
               <h1 className="title">Profile</h1>

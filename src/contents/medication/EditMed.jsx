@@ -47,6 +47,22 @@ const EditMed = ({
           value={updateFormMed.expiryDate}
         />
       </Form.Group>
+      <Form.Group className="mb-3">
+        <Form.Label>STATUS</Form.Label>
+        <Form.Select
+          aria-label="STATUS"
+          name="status"
+          className="fif"
+          required
+          onChange={handleUpdateMed}
+          value={updateFormMed.status}
+          type="text"
+        >
+          <option>Pick Status</option>
+          <option value="Available">Available</option>
+          <option value="Finished">Finished</option>
+        </Form.Select>
+      </Form.Group>
       <div className="formButtonsContainer">
         <button className="formButtons" type="submit">
           Save

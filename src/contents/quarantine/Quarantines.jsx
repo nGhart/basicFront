@@ -1,7 +1,16 @@
 import React, { useState } from 'react';
-import Pagination from 'react-bootstrap/Pagination';
 import SingleQuarantine from './SingleQuarantine';
-import Table from 'react-bootstrap/Table';
+import {
+  Table,
+  Thead,
+  Tbody,
+  Tfoot,
+  Tr,
+  Th,
+  Td,
+  TableCaption,
+  TableContainer,
+} from '@chakra-ui/react';
 import quarantineStore from '../../stores/quarantineStore';
 
 const Quarantines = () => {
@@ -32,52 +41,52 @@ const Quarantines = () => {
   }
 
   return (
-    <div className="tableSection health">
-      <Table bordered hover>
-        <thead>
-          <tr>
-            <th></th>
-            <th>NAME</th>
-            <th>CONDITION</th>
-            <th>START DATE</th>
-            <th>END DATE</th>
-            <th>OUTCOME</th>
-            <th>ACTIONS</th>
-          </tr>
-        </thead>
-        <tbody>
-          {itemsShown.map((item, index) => {
-            const newIndex = firstIndex + index;
-            return (
-              <SingleQuarantine index={newIndex} item={item} key={item._id} />
-            );
-          })}
-        </tbody>
-      </Table>{' '}
-      <div className="page">
-        <Pagination>
-          <Pagination.Item>
-            <i onClick={prevPage} style={{ color: 'black' }}>
-              Prev
-            </i>
-          </Pagination.Item>
-          {numbers.map((item) => (
-            <Pagination.Item
-              key={item}
-              className={`${currentPage === item ? 'activePage' : ''}`}
-            >
-              <i onClick={() => changePage(item)} style={{ color: 'black' }}>
-                {item}
-              </i>
-            </Pagination.Item>
-          ))}
-          <Pagination.Item>
-            <i onClick={nextPage} style={{ color: 'black' }}>
-              Next
-            </i>
-          </Pagination.Item>
-        </Pagination>
-      </div>
+    <div className="tableSection">
+      <TableContainer>
+        <Table size="lg">
+          <Thead>
+            <Tr>
+              <Th></Th>
+              <Th>NAME</Th>
+              <Th>CONDITION</Th>
+              <Th>START DATE</Th>
+              <Th>END DATE</Th>
+              <Th>OUTCOME</Th>
+              <Th>ACTIONS</Th>
+            </Tr>
+          </Thead>
+          <Tbody>
+            {itemsShown.map((item, index) => {
+              const newIndex = firstIndex + index;
+              return (
+                <SingleQuarantine index={newIndex} item={item} key={item._id} />
+              );
+            })}
+          </Tbody>
+          <TableCaption>
+            <div className="page">
+              <div className="pageContainer">
+                <div className="prev">
+                  <i onClick={prevPage}>Prev</i>
+                </div>
+                {numbers.map((item) => (
+                  <div
+                    key={item}
+                    className={`${
+                      currentPage === item ? 'activePage' : 'pages'
+                    }`}
+                  >
+                    <i onClick={() => changePage(item)}>{item}</i>
+                  </div>
+                ))}
+                <div className="next">
+                  <i onClick={nextPage}>Next</i>
+                </div>
+              </div>
+            </div>
+          </TableCaption>
+        </Table>
+      </TableContainer>
     </div>
   );
 };

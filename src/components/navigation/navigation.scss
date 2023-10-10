@@ -1,64 +1,52 @@
 @import '../../styles/responsive.scss';
 @import '../../styles/variables.scss';
 
-.navSection {
-  padding: 10px;
-  .navContainer {
+.navContainer {
+  display: flex;
+  width: 95%;
+  padding: 12px;
+  border-radius: 5px;
+  margin: 5px;
+  z-index: 5;
+  align-items: center;
+  justify-content: space-between;
+  border: 2px solid $deep-bg;
+  background: rgb(103, 193, 174);
+  background: linear-gradient(
+    245deg,
+    rgba(103, 193, 174, 1) 47%,
+    rgba(204, 231, 225, 1) 98%
+  );
+  .logo {
     display: flex;
-    width: 100%;
-    padding: 12px;
-    position: fixed;
-    left: 0;
-    top: 0;
-    z-index: 5;
     align-items: center;
-    justify-content: space-between;
-    background-color: $deep-bg;
-    .logo {
-      display: flex;
-      align-items: center;
-      letter-spacing: -1px;
+    letter-spacing: -1px;
+  }
+  .icons {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    @include sm {
+      text-align: end;
     }
-    .icons {
+
+    .user {
       display: flex;
       align-items: center;
-      gap: 20px;
-      @include sm {
-        text-align: end;
+      .profileImg {
+        border-radius: 50%;
+        object-fit: cover;
+        margin-right: 5px;
       }
-
-      .user {
-        display: flex;
-        align-items: center;
-        img {
-          width: 26px;
-          height: 26px;
-          border-radius: 50%;
-          object-fit: cover;
-          margin-right: 5px;
-        }
-        button {
-          padding: 3px;
-          background-color: transparent;
-          border: 2px outset $dark-bg;
-          color: $soft-color;
-          font-weight: 700;
-          &:hover {
-            background-color: $dark-bg;
-            color: white;
-          }
-        }
-      }
-      .logOutLink {
-        .logOut {
-          background-color: transparent;
-          padding: 3px;
-          border: none;
-          font-family: 'Rowdies', cursive;
-          color: $soft-color;
-          &:hover {
-            background-color: rgb(26, 44, 40);
-          }
+      button {
+        padding: 3px;
+        background-color: transparent;
+        border: 2px outset $dark-bg;
+        color: $dark-bg !important;
+        font-weight: 700;
+        &:hover {
+          background-color: $main-bg;
+          color: white;
         }
       }
     }

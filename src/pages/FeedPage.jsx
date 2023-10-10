@@ -14,8 +14,8 @@ const FeedPage = () => {
 
   return (
     <div>
-      <header className="App-header">
-        <Navbar style={{ backgroundColor: 'rgb(14, 73, 60)' }}>
+      <header className="headerNav">
+        <Navbar>
           <Container>
             <h1 className="title">Feed Records</h1>
             <Navbar.Toggle />

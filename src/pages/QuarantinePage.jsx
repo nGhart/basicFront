@@ -13,12 +13,12 @@ const QuarantinePage = () => {
     store.getQuarantines();
   }, [store]);
   return (
-    <div style={{ marginTop: '10px', height: '100%' }}>
-      <header className="App-header">
-        <Navbar style={{ backgroundColor: 'rgb(47, 137, 118)' }}>
+    <div>
+      <header className="headerNav">
+        <Navbar>
           <Container>
-            <Navbar.Brand href="#home">
-              <h1 className="font4">Quarantine Records</h1>
+            <Navbar.Brand>
+              <h1 className="title">Quarantine Records</h1>
             </Navbar.Brand>
             <Navbar.Toggle />
             <Navbar.Collapse className="justify-content-end">

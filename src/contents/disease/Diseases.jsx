@@ -1,8 +1,15 @@
 import React, { useState } from 'react';
-import Pagination from 'react-bootstrap/Pagination';
 import SingleDisease from './SingleDisease';
-import Table from 'react-bootstrap/Table';
 import diseaseStore from '../../stores/diseaseStore';
+import {
+  Table,
+  Thead,
+  Tbody,
+  Tr,
+  Th,
+  TableCaption,
+  TableContainer,
+} from '@chakra-ui/react';
 
 const Diseases = () => {
   const store = diseaseStore();
@@ -32,53 +39,53 @@ const Diseases = () => {
   }
 
   return (
-    <div className="tableSection health">
-      <Table bordered hover>
-        <thead>
-          <tr>
-            <th></th>
-            <th>ANIMAL</th>
-            <th>CONDITION</th>
-            <th>MANAGEMENT</th>
-            <th>DURATION</th>
-            <th>OUTCOME</th>
-            <th>DATE</th>
-            <th>ACTIONS</th>
-          </tr>
-        </thead>
-        <tbody>
-          {itemsShown.map((item, index) => {
-            const newIndex = firstIndex + index;
-            return (
-              <SingleDisease index={newIndex} item={item} key={item._id} />
-            );
-          })}
-        </tbody>
-      </Table>
-      <div className="page">
-        <Pagination>
-          <Pagination.Item>
-            <i onClick={prevPage} style={{ color: 'black' }}>
-              Prev
-            </i>
-          </Pagination.Item>
-          {numbers.map((item) => (
-            <Pagination.Item
-              key={item}
-              className={`${currentPage === item ? 'activePage' : ''}`}
-            >
-              <i onClick={() => changePage(item)} style={{ color: 'black' }}>
-                {item}
-              </i>
-            </Pagination.Item>
-          ))}
-          <Pagination.Item>
-            <i onClick={nextPage} style={{ color: 'black' }}>
-              Next
-            </i>
-          </Pagination.Item>
-        </Pagination>
-      </div>
+    <div className="tableSection">
+      <TableContainer>
+        <Table className="tables">
+          <Thead>
+            <Tr>
+              <Th></Th>
+              <Th>ANIMAL</Th>
+              <Th>CONDITION</Th>
+              <Th>MANAGEMENT</Th>
+              <Th>DURATION</Th>
+              <Th>OUTCOME</Th>
+              <Th>DATE</Th>
+              <Th>ACTIONS</Th>
+            </Tr>
+          </Thead>
+          <Tbody>
+            {itemsShown.map((item, index) => {
+              const newIndex = firstIndex + index;
+              return (
+                <SingleDisease index={newIndex} item={item} key={item._id} />
+              );
+            })}
+          </Tbody>
+          <TableCaption>
+            <div className="page">
+              <div className="pageContainer">
+                <div className="prev">
+                  <i onClick={prevPage}>Prev</i>
+                </div>
+                {numbers.map((item) => (
+                  <div
+                    key={item}
+                    className={`${
+                      currentPage === item ? 'activePage' : 'pages'
+                    }`}
+                  >
+                    <i onClick={() => changePage(item)}>{item}</i>
+                  </div>
+                ))}
+                <div className="next">
+                  <i onClick={nextPage}>Next</i>
+                </div>
+              </div>
+            </div>
+          </TableCaption>
+        </Table>
+      </TableContainer>
     </div>
   );
 };

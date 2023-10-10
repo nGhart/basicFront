@@ -21,10 +21,11 @@ const AddDisease = () => {
         onHide={handleClose}
         backdrop="static"
         keyboard={false}
+        scrollable={true}
         aria-labelledby="contained-modal-title-vcenter"
         centered
       >
-        <Modal.Header closeButton>
+        <Modal.Header className="header" closeButton>
           <Modal.Title>Add New Disease</Modal.Title>
         </Modal.Header>
         <Modal.Body>

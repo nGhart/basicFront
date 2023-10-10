@@ -2,6 +2,8 @@ import './navigation.scss';
 import { Link } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import profileStore from '../../stores/profileStore';
+import { Center } from '@chakra-ui/react';
+import { Avatar } from '@chakra-ui/react';
 
 const Navigation = () => {
   const profile = profileStore();
@@ -18,7 +20,7 @@ const Navigation = () => {
   }, [profile]);
 
   return (
-    <div className="navSection">
+    <Center>
       <div className="navContainer">
         <div className="logo">
           <Link to="/" className="listItem">
@@ -28,7 +30,13 @@ const Navigation = () => {
         <div className="icons">
           <>
             <div className="user">
-              <img src={profilePic} alt="Logo" />
+              <Avatar
+                className="profileImg"
+                name={profileName}
+                src={profilePic}
+                size="sm"
+                bg="rgb(26, 115, 96)"
+              />
               <Link to="profile">
                 <button>Welcome {profileName} </button>
               </Link>
@@ -36,7 +44,7 @@ const Navigation = () => {
           </>
         </div>
       </div>
-    </div>
+    </Center>
   );
 };
 

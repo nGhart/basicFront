@@ -6,8 +6,23 @@ import Modal from 'react-bootstrap/Modal';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-import rabbit from '../../assets/rabbit.png';
+import { Skeleton, Box } from '@chakra-ui/react';
 import Accordion from 'react-bootstrap/Accordion';
+import {
+  Popover,
+  PopoverTrigger,
+  PopoverContent,
+  PopoverHeader,
+  PopoverBody,
+  PopoverFooter,
+  PopoverArrow,
+  PopoverCloseButton,
+  Portal,
+  useDisclosure,
+  Button,
+  Tr,
+  Td,
+} from '@chakra-ui/react';
 
 const SingleAnimal = ({ item, index }) => {
   const store = animalStore((store) => ({
@@ -23,6 +38,7 @@ const SingleAnimal = ({ item, index }) => {
     store.getAnimals();
   }, []);
 
+  const { isOpenDelete, onToggle, onCloseDelete } = useDisclosure();
   const [showModal, setShowModal] = useState(false);
 
   const handleOpenModal = () => {
@@ -47,17 +63,17 @@ const SingleAnimal = ({ item, index }) => {
 
   return (
     <>
-      <tr key={item._id}>
-        <td>{index + 1}</td>
-        <td>{item.name}</td>
-        <td>{item.breed}</td>
-        <td>{item.sex}</td>
-        <td>{item.bred}</td>
-        <td>{item.dob.slice(0, 10)}</td>
-        <td>{getAge(item.dob)}</td>
-        <td>{item.weaning}</td>
-        <td>{item.weightCurrent}</td>
-        <td>
+      <Tr key={item._id}>
+        <Td>{index + 1}</Td>
+        <Td>{item.name}</Td>
+        <Td>{item.breed}</Td>
+        <Td>{item.sex}</Td>
+        <Td>{item.bred}</Td>
+        <Td>{item.dob.slice(0, 10)}</Td>
+        <Td>{getAge(item.dob)}</Td>
+        <Td>{item.weightCurrent}</Td>
+        <Td>{item.status}</Td>
+        <Td>
           <div className="around actionIcons">
             <button className="actionIcons" onClick={handleShow}>
               <i className="fas fa-eye"></i>
@@ -65,23 +81,43 @@ const SingleAnimal = ({ item, index }) => {
             <button className="actionIcons" onClick={handleOpenModal}>
               <i className="fas fa-edit"></i>
             </button>
-            <button
-              className="actionIcons"
-              onClick={() => store.deleteAnimal(item._id)}
-            >
-              <i className="fas fa-trash-alt"></i>
-            </button>
+
+            <Popover>
+              <PopoverTrigger>
+                <button className="actionIcons" onClick={onToggle}>
+                  <i className="fas fa-trash-alt"></i>
+                </button>
+              </PopoverTrigger>
+              <Portal>
+                <PopoverContent>
+                  <PopoverArrow />
+                  <PopoverHeader>Header</PopoverHeader>
+                  <PopoverCloseButton />
+                  <PopoverBody>
+                    Are you sure you want to delete this entry
+                  </PopoverBody>
+                  <PopoverFooter>
+                    <Button
+                      colorScheme="red"
+                      onClick={() => store.deleteAnimal(item._id)}
+                    >
+                      Delete
+                    </Button>
+                  </PopoverFooter>
+                </PopoverContent>
+              </Portal>
+            </Popover>
           </div>
-        </td>
-      </tr>
+        </Td>
+      </Tr>
 
       <Modal
         show={showModal}
         style={{ padding: '5px' }}
         onHide={handleCloseModal}
-        fullscreen
+        scrollable={true}
       >
-        <Modal.Header closeButton>
+        <Modal.Header closeButton className="header">
           <h4>Edit Animal</h4>
         </Modal.Header>
         <Modal.Body>
@@ -105,7 +141,7 @@ const SingleAnimal = ({ item, index }) => {
                 <Row>
                   <Col xs={6}>
                     <img
-                      src={rabbit}
+                      src={item.pic}
                       alt="Animal"
                       style={{ width: '100%', objectFit: 'cover' }}
                     />
@@ -136,7 +172,7 @@ const SingleAnimal = ({ item, index }) => {
                       }}
                     >
                       <span>DOB</span>
-                      {item.dob}
+                      {item.dob.slice(0, 10)}
                     </p>
                     <p
                       style={{
@@ -153,8 +189,7 @@ const SingleAnimal = ({ item, index }) => {
                       }}
                     >
                       <span>AGE</span>
-                      {getAge(item.dob)}
-                      weeks
+                      {getAge(item.dob)} weeks
                     </p>
 
                     <p
@@ -164,14 +199,6 @@ const SingleAnimal = ({ item, index }) => {
                       }}
                     >
                       <span>BREED</span> {item.breed}
-                    </p>
-                    <p
-                      style={{
-                        display: 'flex',
-                        justifyContent: 'space-between',
-                      }}
-                    >
-                      <span>DATE WEANED</span> {item.weaning} weeks
                     </p>
                   </Col>
                 </Row>
@@ -228,32 +255,6 @@ const SingleAnimal = ({ item, index }) => {
                           justifyContent: 'space-between',
                         }}
                       >
-                        <span>BIRTH WEIGHT</span>
-                        {item.weightBirth}
-                      </p>
-                      <p
-                        style={{
-                          display: 'flex',
-                          justifyContent: 'space-between',
-                        }}
-                      >
-                        <span>WEANING WEIGHT</span> {item.weightWean}
-                      </p>
-                      <p
-                        style={{
-                          display: 'flex',
-                          justifyContent: 'space-between',
-                        }}
-                      >
-                        <span>WEIGHT AT 8 WEEKS</span>
-                        {item.weight8}
-                      </p>
-                      <p
-                        style={{
-                          display: 'flex',
-                          justifyContent: 'space-between',
-                        }}
-                      >
                         <span>CURRENT WEIGHT</span> {item.weightCurrent}
                       </p>
                       <p
@@ -275,21 +276,8 @@ const SingleAnimal = ({ item, index }) => {
                           justifyContent: 'space-between',
                         }}
                       >
-                        <span>DATE OF FIRST SERVICE</span> {item.firstService}
+                        <span>TOTAL SERVICE</span> {item.totalService}
                       </p>
-                      <p
-                        style={{
-                          display: 'flex',
-                          justifyContent: 'space-between',
-                        }}
-                      >
-                        <span>DATE OF LAST SERVICE</span> {item.totalService}
-                      </p>
-                    </Accordion.Body>
-                  </Accordion.Item>
-                  <Accordion.Item eventKey="3">
-                    <Accordion.Header>Litters</Accordion.Header>
-                    <Accordion.Body>
                       <p
                         style={{
                           display: 'flex',
@@ -298,6 +286,11 @@ const SingleAnimal = ({ item, index }) => {
                       >
                         <span>TOTAL LITTERS</span> {item.totalLitters}
                       </p>
+                    </Accordion.Body>
+                  </Accordion.Item>
+                  <Accordion.Item eventKey="3">
+                    <Accordion.Header>Litters</Accordion.Header>
+                    <Accordion.Body>
                       <p
                         style={{
                           display: 'flex',

@@ -36,6 +36,21 @@ const EditVaccination = ({
           value={updateFormVaccination.nextDate}
         />
       </Form.Group>
+      <Form.Group className="mb-3">
+        <Form.Label>STATUS</Form.Label>
+        <Form.Select
+          aria-label="STATUS"
+          name="status"
+          className="fif"
+          onChange={handleUpdateVaccination}
+          value={updateFormVaccination.status}
+          type="text"
+        >
+          <option>Pick Status</option>
+          <option value="Pending">Pending</option>
+          <option value="Completed">Completed</option>
+        </Form.Select>
+      </Form.Group>
       <div className="formButtonsContainer">
         <button className="formButtons" type="submit">
           Save

@@ -13,8 +13,8 @@ const MedPage = () => {
   }, [store]);
   return (
     <div>
-      <header className="App-header">
-        <Navbar style={{ backgroundColor: 'rgb(14, 73, 60)' }}>
+      <header className="headerNav">
+        <Navbar>
           <Container>
             <Navbar.Brand href="#home">
               <h1 className="title">Medication Stock</h1>

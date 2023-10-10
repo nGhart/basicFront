@@ -2,6 +2,21 @@ import React, { useState } from 'react';
 import diseaseStore from '../../stores/diseaseStore';
 import EditDisease from './EditDisease';
 import Modal from 'react-bootstrap/Modal';
+import {
+  Popover,
+  PopoverTrigger,
+  PopoverContent,
+  PopoverHeader,
+  PopoverBody,
+  PopoverFooter,
+  PopoverArrow,
+  PopoverCloseButton,
+  Portal,
+  useDisclosure,
+  Button,
+  Tr,
+  Td,
+} from '@chakra-ui/react';
 
 const SingleDisease = ({ item, index }) => {
   const store = diseaseStore((store) => {
@@ -13,6 +28,7 @@ const SingleDisease = ({ item, index }) => {
       updateFormDisease: store.updateFormDisease,
     };
   });
+  const { isOpenDelete, onToggle, onCloseDelete } = useDisclosure();
   const [showModal, setShowModal] = useState(false);
   const handleOpenModal = () => {
     store.editDisease(item);
@@ -22,30 +38,50 @@ const SingleDisease = ({ item, index }) => {
 
   return (
     <>
-      <tr key={item._id}>
-        <td>{index + 1}</td>
-        <td>{item.diseaseAnimal}</td>
-        <td>{item.diseaseCondition}</td>
-        <td>{item.diseaseManagement}</td>
-        <td>{item.diseaseDuration}</td>
-        <td>{item.diseaseOutcome}</td>
-        <td>{item.diseaseDate}</td>
-        <td>
+      <Tr key={item._id}>
+        <Td>{index + 1}</Td>
+        <Td>{item.diseaseAnimal}</Td>
+        <Td>{item.diseaseCondition}</Td>
+        <Td>{item.diseaseManagement}</Td>
+        <Td>{item.diseaseDuration}</Td>
+        <Td>{item.diseaseOutcome}</Td>
+        <Td>{item.diseaseDate}</Td>
+        <Td>
           <div className="around actionIcons">
             <button className="actionIcons" onClick={handleOpenModal}>
               <i className="fas fa-edit"></i>
             </button>
-            <button
-              className="actionIcons"
-              onClick={() => store.deleteDisease(item._id)}
-            >
-              <i className="fas fa-trash-alt"></i>
-            </button>
+
+            <Popover>
+              <PopoverTrigger>
+                <button className="actionIcons" onClick={onToggle}>
+                  <i className="fas fa-trash-alt"></i>
+                </button>
+              </PopoverTrigger>
+              <Portal>
+                <PopoverContent>
+                  <PopoverArrow />
+                  <PopoverHeader>Header</PopoverHeader>
+                  <PopoverCloseButton />
+                  <PopoverBody>
+                    Are you sure you want to delete this entry
+                  </PopoverBody>
+                  <PopoverFooter>
+                    <Button
+                      colorScheme="red"
+                      onClick={() => store.deleteDisease(item._id)}
+                    >
+                      Delete
+                    </Button>
+                  </PopoverFooter>
+                </PopoverContent>
+              </Portal>
+            </Popover>
           </div>
-        </td>
-      </tr>
-      <Modal show={showModal} onHide={handleCloseModal}>
-        <Modal.Header closeButton>
+        </Td>
+      </Tr>
+      <Modal show={showModal} onHide={handleCloseModal} scrollable={true}>
+        <Modal.Header className="header" closeButton>
           <Modal.Title>Edit Entry</Modal.Title>
         </Modal.Header>
         <Modal.Body>
