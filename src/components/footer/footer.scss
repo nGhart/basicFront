@@ -9,8 +9,8 @@
   position: fixed;
   bottom: 0;
   left: 0;
-  z-index: 4;
-  background-color: $deep-bg;
+  z-index: 40;
+  border-top: 2px solid $deep-bg;
   .logo {
     letter-spacing: -1px;
   }
