@@ -15,7 +15,6 @@ import {
 import Home from './pages/home/Home.jsx';
 import FeedPage from './pages/FeedPage.jsx';
 import MatingPage from './pages/MatingPage.jsx';
-import HealthPage from './pages/HealthPage.jsx';
 import QuarantinePage from './pages/QuarantinePage.jsx';
 import VaccinationPage from './pages/VaccinationPage.jsx';
 import DiseasePage from './pages/DiseasePage.jsx';
@@ -50,12 +49,6 @@ const router = createBrowserRouter(
         <Route path="disease" element={<DiseasePage />} />
         <Route path="quarantine" element={<QuarantinePage />} />
         <Route path="vaccination" element={<VaccinationPage />} />
-        <Route path="health" element={<HealthPage />}>
-          <Route index element={<DiseasePage />} />
-          <Route path="disease" element={<DiseasePage />} />
-          <Route path="quarantine" element={<QuarantinePage />} />
-          <Route path="vaccination" element={<VaccinationPage />} />
-        </Route>
         <Route path="feed" element={<FeedPage />} />
         <Route path="meds" element={<MedicationPage />} />
         <Route path="profile" element={<ProfilePage />} />
