@@ -1,14 +1,23 @@
 import React, { useState } from 'react';
-import Pagination from 'react-bootstrap/Pagination';
 import SingleMed from './SingleMed';
-import Table from 'react-bootstrap/Table';
 import medStore from '../../stores/medStore';
+import {
+  Table,
+  Thead,
+  Tbody,
+  Tfoot,
+  Tr,
+  Th,
+  Td,
+  TableCaption,
+  TableContainer,
+} from '@chakra-ui/react';
 
 const Meds = () => {
   const store = medStore();
   const [currentPage, setCurrentPage] = useState(1);
   const meds = store.meds || [];
-  const itemsPerPage = 10;
+  const itemsPerPage = 7;
   const lastIndex = currentPage * itemsPerPage;
   const firstIndex = lastIndex - itemsPerPage;
   const itemsShown = meds.slice(firstIndex, lastIndex);
@@ -32,48 +41,49 @@ const Meds = () => {
   }
   return (
     <div className="tableSection">
-      <Table bordered hover>
-        <thead>
-          <tr>
-            <th></th>
-            <th>NAME</th>
-            <th>BATCH NO</th>
-            <th>SUPPLIER</th>
-            <th>EXPIRY DATE</th>
-            <th>ACTIONS</th>
-          </tr>
-        </thead>
-        <tbody>
-          {itemsShown.map((item, index) => {
-            const newIndex = firstIndex + index;
-            return <SingleMed index={newIndex} item={item} key={item._id} />;
-          })}
-        </tbody>
-      </Table>
-      <div className="page">
-        <Pagination>
-          <Pagination.Item>
-            <i onClick={prevPage} style={{ color: 'black' }}>
-              Prev
-            </i>
-          </Pagination.Item>
-          {numbers.map((item) => (
-            <Pagination.Item
-              key={item}
-              className={`${currentPage === item ? 'activePage' : ''}`}
-            >
-              <i onClick={() => changePage(item)} style={{ color: 'black' }}>
-                {item}
-              </i>
-            </Pagination.Item>
-          ))}
-          <Pagination.Item>
-            <i onClick={nextPage} style={{ color: 'black' }}>
-              Next
-            </i>
-          </Pagination.Item>
-        </Pagination>
-      </div>
+      <TableContainer>
+        <Table size="lg">
+          <Thead>
+            <Tr>
+              <Th></Th>
+              <Th>NAME</Th>
+              <Th>BATCH NO</Th>
+              <Th>SUPPLIER</Th>
+              <Th>EXPIRY DATE</Th>
+              <Th>STATUS</Th>
+              <Th>ACTIONS</Th>
+            </Tr>
+          </Thead>
+          <Tbody>
+            {itemsShown.map((item, index) => {
+              const newIndex = firstIndex + index;
+              return <SingleMed index={newIndex} item={item} key={item._id} />;
+            })}
+          </Tbody>
+          <TableCaption>
+            <div className="page">
+              <div className="pageContainer">
+                <div className="prev">
+                  <i onClick={prevPage}>Prev</i>
+                </div>
+                {numbers.map((item) => (
+                  <div
+                    key={item}
+                    className={`${
+                      currentPage === item ? 'activePage' : 'pages'
+                    }`}
+                  >
+                    <i onClick={() => changePage(item)}>{item}</i>
+                  </div>
+                ))}
+                <div className="next">
+                  <i onClick={nextPage}>Next</i>
+                </div>
+              </div>
+            </div>
+          </TableCaption>
+        </Table>
+      </TableContainer>
     </div>
   );
 };
