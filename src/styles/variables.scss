@@ -1,5 +1,6 @@
 $main-bg: rgb(26, 115, 96);
 $soft-bg: rgb(47, 137, 118);
+$light-bg: rgb(103, 193, 174);
 $dark-bg: rgb(26, 44, 40);
 $deep-bg: rgb(14, 73, 60);
 $main-color: rgb(231, 226, 212);
@@ -7,3 +8,18 @@ $soft-color: rgb(200, 212, 209);
 $dark-color: rgb(84, 87, 86);
 $soft-accent: rgb(203, 193, 110);
 $dark-accent: rgb(183, 167, 19);
+$lin-grad: linear-gradient(
+  245deg,
+  rgba(103, 193, 174, 1) 47%,
+  rgba(204, 231, 225, 1) 98%
+);
+$rad-grad: radial-gradient(
+  circle,
+  rgba(103, 193, 174, 1) 0%,
+  rgba(204, 231, 225, 1) 78%
+);
+$rad-deep: radial-gradient(
+  circle,
+  rgba(204, 231, 225, 1) 0%,
+  rgba(103, 193, 174, 1) 78%
+);
