@@ -2,6 +2,21 @@ import React, { useState } from 'react';
 import medStore from '../../stores/medStore';
 import EditMed from './EditMed';
 import Modal from 'react-bootstrap/Modal';
+import {
+  Popover,
+  PopoverTrigger,
+  PopoverContent,
+  PopoverHeader,
+  PopoverBody,
+  PopoverFooter,
+  PopoverArrow,
+  PopoverCloseButton,
+  Portal,
+  useDisclosure,
+  Button,
+  Tr,
+  Td,
+} from '@chakra-ui/react';
 
 const SingleMed = ({ item, index }) => {
   const store = medStore((store) => {
@@ -13,6 +28,7 @@ const SingleMed = ({ item, index }) => {
       updateFormMed: store.updateFormMed,
     };
   });
+  const { isOpenDelete, onToggle, onCloseDelete } = useDisclosure();
   const [showModal, setShowModal] = useState(false);
   const handleOpenModal = () => {
     store.editMed(item);
@@ -22,28 +38,48 @@ const SingleMed = ({ item, index }) => {
 
   return (
     <>
-      <tr key={item._id}>
-        <td>{index + 1}</td>
-        <td>{item.name}</td>
-        <td>{item.number}</td>
-        <td>{item.supplier}</td>
-        <td>{item.expiryDate}</td>
-        <td>
+      <Tr key={item._id}>
+        <Td>{index + 1}</Td>
+        <Td>{item.name}</Td>
+        <Td>{item.number}</Td>
+        <Td>{item.supplier}</Td>
+        <Td>{item.expiryDate}</Td>
+        <Td>{item.status}</Td>
+        <Td>
           <div className="around actionIcons">
             <button className="actionIcons" onClick={handleOpenModal}>
               <i className="fas fa-edit"></i>
             </button>
-            <button
-              className="actionIcons"
-              onClick={() => store.deleteMed(item._id)}
-            >
-              <i className="fas fa-trash-alt"></i>
-            </button>
+            <Popover>
+              <PopoverTrigger>
+                <button className="actionIcons" onClick={onToggle}>
+                  <i className="fas fa-trash-alt"></i>
+                </button>
+              </PopoverTrigger>
+              <Portal>
+                <PopoverContent>
+                  <PopoverArrow />
+                  <PopoverHeader>Header</PopoverHeader>
+                  <PopoverCloseButton />
+                  <PopoverBody>
+                    Are you sure you want to delete this entry
+                  </PopoverBody>
+                  <PopoverFooter>
+                    <Button
+                      colorScheme="red"
+                      onClick={() => store.deleteMed(item._id)}
+                    >
+                      Delete
+                    </Button>
+                  </PopoverFooter>
+                </PopoverContent>
+              </Portal>
+            </Popover>
           </div>
-        </td>
-      </tr>
-      <Modal show={showModal} onHide={handleCloseModal}>
-        <Modal.Header closeButton>
+        </Td>
+      </Tr>
+      <Modal show={showModal} onHide={handleCloseModal} scrollable={true}>
+        <Modal.Header className="header" closeButton>
           <Modal.Title>Edit Entry</Modal.Title>
         </Modal.Header>
         <Modal.Body>
