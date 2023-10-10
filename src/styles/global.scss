@@ -9,19 +9,18 @@ a {
   text-decoration: none;
   color: inherit;
 }
-.mainSection {
-  //background-color: $main-bg;
-  //color: $main-color;
-  //min-width: 1200px;
-}
 .midSection {
   display: flex;
-  margin-top: 77px;
+  height: calc(100vh - 116.1px);
 }
 .menuSection {
   width: 250px;
   padding: 5px 20px;
+  margin: 10px;
   border-right: 2px solid $dark-accent;
+  border-radius: 5px;
+  background-color: rgba(255, 255, 255, 0.473);
+  color: rgb(26, 44, 40);
   @include lg {
     width: max-content;
   }
@@ -32,6 +31,61 @@ a {
   width: 100%;
   justify-content: center;
 }
-// .tableContainer {
-//   height: 510px;
-// }
+header,
+.header {
+  background-color: $main-bg;
+  border: 5px;
+}
+.headerNav {
+  background-color: rgb(47, 137, 118);
+  background: rgb(103, 193, 174);
+  background: linear-gradient(
+    245deg,
+    rgba(103, 193, 174, 1) 0%,
+    rgba(204, 231, 225, 1) 93%
+  );
+  border-radius: 5px;
+  box-shadow: 0 4px 8px 0 $deep-bg, 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  margin-bottom: 10px;
+}
+.page {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  &:hover {
+    cursor: pointer;
+  }
+  .pageContainer {
+    display: flex;
+    .prev {
+      width: 60px;
+      height: 38px;
+      padding: 6px 12px;
+      border-bottom-left-radius: 5px;
+      border-top-left-radius: 5px;
+      background-color: #fff;
+    }
+    .pages {
+      width: 33px;
+      height: 38px;
+      padding: 6px 12px;
+      background-color: #fff;
+    }
+    .next {
+      width: 60px;
+      height: 38px;
+      padding: 6px 12px;
+      border-bottom-right-radius: 5px;
+      border-top-right-radius: 5px;
+      background-color: #fff;
+    }
+  }
+}
+
+.activePage {
+  border: 2px solid rgb(26, 44, 40);
+  width: 33px;
+  height: 38px;
+  padding: 6px 12px;
+  background-color: #fff;
+}
