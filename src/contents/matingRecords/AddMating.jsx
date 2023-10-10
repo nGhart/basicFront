@@ -24,7 +24,7 @@ const AddMating = () => {
         aria-labelledby="contained-modal-title-vcenter"
         centered
       >
-        <Modal.Header closeButton>
+        <Modal.Header className="header" closeButton>
           <Modal.Title>Add New Entry</Modal.Title>
         </Modal.Header>
         <Modal.Body>
@@ -87,6 +87,21 @@ const AddMating = () => {
                 onChange={store.updateCreateMatings}
                 value={store.createMating.kindling}
               />
+            </Form.Group>
+            <Form.Group className="mb-3">
+              <Form.Label>STATUS</Form.Label>
+              <Form.Select
+                aria-label="STATUS"
+                name="status"
+                className="fif"
+                onChange={store.updateCreateMatings}
+                value={store.createMating.status}
+                type="text"
+              >
+                <option>Pick Status</option>
+                <option value="Pending">Pending</option>
+                <option value="Completed">Completed</option>
+              </Form.Select>
             </Form.Group>
             <div className="formButtonsContainer">
               <button className="formButtons" variant="primary" type="submit">
