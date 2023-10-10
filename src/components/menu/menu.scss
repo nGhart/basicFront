@@ -13,9 +13,9 @@
     .menuTitle {
       font-size: 16px;
       font-family: 'Righteous', cursive;
-      color: rgb(231, 226, 212);
+      //color: rgb(231, 226, 212);
       font-size: 16px;
-      color: $soft-color;
+      //color: $soft-color;
       @include lg {
         display: none;
       }
@@ -26,9 +26,9 @@
       gap: 10px;
       padding: 5px;
       border-radius: 5px;
-      &:hover {
-        background-color: $soft-bg;
-      }
+      // &:hover {
+      //   background-color: rgb(47, 137, 118);
+      // }
       .listItemTitle {
         @include lg {
           display: none;
