@@ -1,14 +1,21 @@
 import React, { useState } from 'react';
-import Pagination from 'react-bootstrap/Pagination';
 import animalStore from '../../stores/animalStore';
-import Table from 'react-bootstrap/Table';
+import {
+  Table,
+  Thead,
+  Tbody,
+  Tr,
+  Th,
+  TableCaption,
+  TableContainer,
+} from '@chakra-ui/react';
 import SingleAnimal from './SingleAnimal';
 
 const Animals = () => {
   const store = animalStore();
   const [currentPage, setCurrentPage] = useState(1);
   const animals = store.animals || [];
-  const itemsPerPage = 10;
+  const itemsPerPage = 7;
   const lastIndex = currentPage * itemsPerPage;
   const firstIndex = lastIndex - itemsPerPage;
   const itemsShown = animals.slice(firstIndex, lastIndex);
@@ -33,52 +40,55 @@ const Animals = () => {
 
   return (
     <div className="tableSection">
-      <Table bordered hover style={{ width: '100%' }}>
-        <thead>
-          <tr>
-            <th></th>
-            <th>ID</th>
-            <th>BREED</th>
-            <th>SEX</th>
-            <th>SOURCE</th>
-            <th>DOB</th>
-            <th>AGE (wks)</th>
-            <th>WEANED (wks)</th>
-            <th>WEIGHT (kg)</th>
-            <th>ACTIONS</th>
-          </tr>
-        </thead>
-        <tbody>
-          {itemsShown.map((item, index) => {
-            const newIndex = firstIndex + index;
-            return <SingleAnimal item={item} index={newIndex} key={item._id} />;
-          })}
-        </tbody>
-      </Table>
-      <div className="page">
-        <Pagination>
-          <Pagination.Item>
-            <i onClick={prevPage} style={{ color: 'black' }}>
-              Prev
-            </i>
-          </Pagination.Item>
-          {numbers.map((item) => (
-            <Pagination.Item
-              key={item}
-              className={`${currentPage === item ? 'activePage' : ''}`}
-            >
-              <i onClick={() => changePage(item)} style={{ color: 'black' }}>
-                {item}
-              </i>
-            </Pagination.Item>
-          ))}
-          <Pagination.Item>
-            <i onClick={nextPage} style={{ color: 'black' }}>
-              Next
-            </i>
-          </Pagination.Item>
-        </Pagination>
-      </div>
+      <TableContainer>
+        <Table size="md">
+          <Thead>
+            <Tr>
+              <Th></Th>
+              <Th>ID</Th>
+              <Th>BREED</Th>
+              <Th>SEX</Th>
+              <Th>SOURCE</Th>
+              <Th>DOB</Th>
+              <Th>AGE (wks)</Th>
+              <Th>WEIGHT (kg)</Th>
+              <Th>STATUS</Th>
+              <Th>ACTIONS</Th>
+            </Tr>
+          </Thead>
+          <Tbody>
+            {itemsShown.map((item, index) => {
+              const newIndex = firstIndex + index;
+              return (
+                <SingleAnimal item={item} index={newIndex} key={item._id} />
+              );
+            })}
+          </Tbody>
+
+          <TableCaption>
+            <div className="page">
+              <div className="pageContainer">
+                <div className="prev">
+                  <i onClick={prevPage}>Prev</i>
+                </div>
+                {numbers.map((item) => (
+                  <div
+                    key={item}
+                    className={`${
+                      currentPage === item ? 'activePage' : 'pages'
+                    }`}
+                  >
+                    <i onClick={() => changePage(item)}>{item}</i>
+                  </div>
+                ))}
+                <div className="next">
+                  <i onClick={nextPage}>Next</i>
+                </div>
+              </div>
+            </div>
+          </TableCaption>
+        </Table>
+      </TableContainer>
     </div>
   );
 };
